@@ -6,7 +6,8 @@ from crewai.tools.base_tool import BaseTool
 from crewai.utilities import I18N
 
 i18n = I18N()
-
+# 主要是针对agents之间底层的协作逻辑，比如添加图片、添加文件等
+# 这些工具的输入参数都是固定的，不需要用户输入
 
 class AddImageToolSchema(BaseModel):
     image_url: str = Field(..., description="The URL or path of the image to add")

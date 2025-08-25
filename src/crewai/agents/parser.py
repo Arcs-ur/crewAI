@@ -10,12 +10,12 @@ MISSING_ACTION_AFTER_THOUGHT_ERROR_MESSAGE = "I did it wrong. Invalid Format: I 
 MISSING_ACTION_INPUT_AFTER_ACTION_ERROR_MESSAGE = "I did it wrong. Invalid Format: I missed the 'Action Input:' after 'Action:'. I will do right next, and don't use a tool I have already used.\n"
 FINAL_ANSWER_AND_PARSABLE_ACTION_ERROR_MESSAGE = "I did it wrong. Tried to both perform Action and give a Final Answer at the same time, I must do one or the other"
 
-
+# 存储代理执行工具的信息，包含思考过程、工具名称、工具输入等。
 class AgentAction:
     thought: str
     tool: str
     tool_input: str
-    text: str
+    text: str # text用来保存原始LLM输出文本
     result: str
 
     def __init__(self, thought: str, tool: str, tool_input: str, text: str):
@@ -24,7 +24,7 @@ class AgentAction:
         self.tool_input = tool_input
         self.text = text
 
-
+# 存储代理的最终答案，包含思考过程和输出结果。
 class AgentFinish:
     thought: str
     output: str
